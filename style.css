@@ -1,0 +1,54 @@
+/* style.css */
+
+/* 全体の基本スタイル */
+body {
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* 見出しのスタイル */
+  h1 {
+    color: #2c3e50;
+    font-size: 2em;
+    background-color: aliceblue;
+    border-bottom: 2px dashed #2c3e50;
+    padding-bottom: 0.3em;
+  }
+  
+  h2 {
+    color: #34495e;
+    margin-top: 1.5em;
+    background-color: aliceblue;
+    border-left: 5px dashed #3498db;
+    padding-left: 10px;
+  }
+  
+  h3 {
+    color: #2980b9;
+    margin-top: 1em;
+  }
+  
+  /* 段落のスタイル */
+  p {
+    margin-bottom: 1em;
+  }
+  
+  /* リンクのスタイル */
+  a {
+    color: #f28376;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ページ内のリンクブロックにマージンを */
+  p a {
+    display: inline-block;
+    margin-top: 0.5em;
+  }
+  
