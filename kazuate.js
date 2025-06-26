@@ -1,44 +1,43 @@
-// 答え
-let kotae = Math.floor(Math.random()*10) + 1;
-console.log('答え（デバッグ用）: ' + kotae);
+let kotae = Math.floor(Math.random() * 10) + 1;
+console.log('答え(デバッグ用): ' + kotae);
 
-// 入力回数（予想回数）
 let kaisu = 0;
+let isGameOver = false; // ゲームが終了したかどうか
 
-// 正解したかどうかを記録する変数
-let seikai = false;
-
-// 予想を4回実行する（将来削除）
-hantei();
-hantei();
-hantei();
-hantei();
+let s = document.querySelector('button#print');
+s.addEventListener('click', hantei);
 
 function hantei() {
-  // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
-  let yoso = 4;
-
-  // 回数をカウント
   kaisu++;
 
-  // 予想回数と予想値を表示
-  console.log(`${kaisu}回目の予想: ${yoso}`);
+  // ユーザーの入力を取得
+  let yoso = Math.floor(document.querySelector('input[name="seisu"]').value);
 
-  // 回答回数が4回以上またはすでに正解していたら
-  if (kaisu >= 4 || seikai) {
-    console.log(`答えは ${kotae} でした．すでにゲームは終わっています`);
+  // 回数と予想を表示
+  let x = document.querySelector('p#result');
+  let y = document.querySelector('span#answer');
+  y.textContent = yoso;
+  let z = document.querySelector('span#kaisu');
+  z.textContent = kaisu;
+
+  console.log(kaisu + '回目の予想 ' + yoso);
+
+  if (isGameOver) {
+    x.textContent = '答えは ' + kotae + ' でした．すでにゲームは終わっています';
     return;
   }
 
-  // 正解かどうかの判定
-  if (yoso === kotae) {
-    console.log("正解です．おめでとう!");
-    seikai = true; // 正解フラグを立てる（以降のhanteiでは終了メッセージを出す）
-  } else if (kaisu === 3) {
-    console.log(`まちがい．残念でした答えは ${kotae} です．`);
-  } else if (yoso < kotae) {
-    console.log("まちがい．答えはもっと大きいですよ");
+  if (kotae === yoso) {
+    x.textContent = '正解です．おめでとう!';
+    isGameOver = true;
   } else {
-    console.log("まちがい．答えはもっと小さいですよ");
+    if (kaisu === 3) {
+      x.textContent = 'まちがい．残念でした答えは ' + kotae + ' です．';
+      isGameOver = true;
+    } else if (kotae > yoso) {
+      x.textContent = 'まちがい．答えはもっと大きいですよ';
+    } else {
+      x.textContent = 'まちがい．答えはもっと小さいですよ';
+    }
   }
 }

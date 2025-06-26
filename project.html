@@ -1,23 +1,98 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>プロジェクト課題:世界の天気</title>
-    <link rel="stylesheet" href="project.css">
-    <script src="weather.js" defer></script>
-  </head>
-  <body>
-    <h1>世界の天気（検索結果1件）</h1>
-    <ul>
-        <li>経度: 116.3972</li>
-        <li>緯度: 39.9075</li>
-        <li>天気: 曇りがち</li>
-        <li>最低気温: 9.94</li>
-        <li>最高気温: 9.94</li>
-        <li>湿度: 14</li>
-        <li>風速: 2.65</li>
-        <li>風向: 197</li>
-        <li>都市名: 北京市</li>
-    </ul>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>世界の天気</title>
+  <script src="project.css" defer></script>
+  <script src="weather.js" defer></script>
+  <style>
+    .map-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .map-container img {
+      width: 700px;
+      height: auto;
+    }
+
+    .city-checkbox {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>世界の天気</h1>
+
+<div class="map-container">
+  <img src="世界地図2.png" alt="世界地図">
+
+  <!-- 各都市チェックボックス -->
+  <label class="city-checkbox" style="top: 45%; left: 20%;">
+    <input type="checkbox" value="360630"> Cairo
+  </label>
+
+  <label class="city-checkbox" style="top: 28%; left: 23%;">
+    <input type="checkbox" value="524901"> Moscow
+  </label>
+
+  <label class="city-checkbox" style="top: 73%; left: 25%;">
+    <input type="checkbox" value="993800"> Johannesburg
+  </label>
+
+  <label class="city-checkbox" style="top: 37%; left: 43%;">
+    <input type="checkbox" value="1816670"> Beijing
+  </label>
+
+  <label class="city-checkbox" style="top: 42%; left: 49%;">
+    <input type="checkbox" value="1850147"> Tokyo
+  </label>
+
+  <label class="city-checkbox" style="top: 56%; left: 40%;">
+    <input type="checkbox" value="1880252"> Singapore
+  </label>
+
+  <label class="city-checkbox" style="top: 80%; left: 52%;">
+    <input type="checkbox" value="2147714"> Sydney
+  </label>
+
+  <label class="city-checkbox" style="top: 30%; left: 11%;">
+    <input type="checkbox" value="2643743"> London
+  </label>
+
+  <label class="city-checkbox" style="top: 35%; left: 12%;">
+    <input type="checkbox" value="2968815"> Paris
+  </label>
+
+  <label class="city-checkbox" style="top: 75%; left: 95%;">
+    <input type="checkbox" value="3451189"> Rio
+  </label>
+
+  <label class="city-checkbox" style="top: 40%; left: 90%;">
+    <input type="checkbox" value="5128581"> New York
+  </label>
+
+  <label class="city-checkbox" style="top: 40%; left: 75%;">
+    <input type="checkbox" value="5368361"> LA
+  </label>
+</div>
+
+<button id="print">検索</button>
+
+<!-- JavaScript：選択都市を取得 -->
+<script>
+  document.getElementById('print').addEventListener('click', () => {
+    const checked = document.querySelectorAll('.map-container input[type="checkbox"]:checked');
+    const selectedIDs = Array.from(checked).map(cb => cb.value);
+    console.log("選択された都市ID一覧:", selectedIDs);
+  });
+</script>
+
+</body>
 </html>
